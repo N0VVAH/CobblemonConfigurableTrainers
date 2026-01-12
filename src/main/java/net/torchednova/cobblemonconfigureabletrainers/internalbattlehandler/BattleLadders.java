@@ -31,6 +31,8 @@ public class BattleLadders {
     public Vec3 getExit() { return bats.getLast(); }
     public Vec3 getStart() { return bats.getFirst();}
     public Vec3 getCur() { return bats.get(index); }
+    public int getBatSize() { return bats.size(); }
+    public Vec3 getBatAtIndex(int ind) { return bats.get(ind); }
     public Boolean setPlayer(UUID uuid) {
         if (hasPlayer() == false)
         {

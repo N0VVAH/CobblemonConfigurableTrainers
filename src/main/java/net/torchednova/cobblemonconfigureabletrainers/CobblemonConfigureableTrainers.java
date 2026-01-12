@@ -196,6 +196,8 @@ public class CobblemonConfigureableTrainers {
         StartBattleLadder.register(event.getDispatcher());
         LeaveBattleLadder.register(event.getDispatcher());
         AttachTrainerToNPC.register(event.getDispatcher());
+        ShowAllBattleLadders.register(event.getDispatcher());
+        ShowBattleLadderInfo.register(event.getDispatcher());
     }
 
 }

@@ -43,7 +43,7 @@ public class LadderRadiusCheck {
             if (dist > bl.getDist())
             {
                 pos = bl.getExit();
-                player.connection.teleport(pos.x, pos.y, pos.y, 0, 0);
+                player.connection.teleport(pos.x, pos.y, pos.z, 0, 0);
                 bl.setPlayer(null);
                 PlayerChatMessage chatMessage = PlayerChatMessage.unsigned(
                         player.getUUID(),

@@ -6,6 +6,8 @@ import java.util.ArrayList;
 import java.util.Objects;
 import java.util.UUID;
 
+import static com.mojang.text2speech.Narrator.LOGGER;
+
 public class BattleLadderController {
     public static ArrayList<BattleLadders> bl;
 
@@ -31,7 +33,7 @@ public class BattleLadderController {
     {
         for (int i = 0; i < bl.size(); i++)
         {
-            if (Objects.equals(bl.get(i).getName(), name))
+            if (bl.get(i).getName() != null && Objects.equals(bl.get(i).getName(), name))
             {
                 return bl.get(i);
             }
@@ -66,7 +68,7 @@ public class BattleLadderController {
     {
         for (int i = 0; i < bl.size(); i++)
         {
-            if (Objects.equals(bl.get(i).getPlayer().toString(), player.toString()))
+            if (bl.get(i).getPlayer() != null && Objects.equals(bl.get(i).getPlayer().toString(), player.toString()))
             {
                 return bl.get(i).getNext();
             }
@@ -78,7 +80,7 @@ public class BattleLadderController {
     {
         for (int i = 0; i < bl.size(); i++)
         {
-            if (Objects.equals(bl.get(i).getPlayer().toString(), player.toString()))
+            if (bl.get(i).getPlayer() != null && Objects.equals(bl.get(i).getPlayer().toString(), player.toString()))
             {
                 return bl.get(i).getExit();
             }
@@ -90,7 +92,7 @@ public class BattleLadderController {
     {
         for (int i = 0; i < bl.size(); i++)
         {
-            if (Objects.equals(bl.get(i).getPlayer().toString(), player.toString()))
+            if (bl.get(i).getPlayer() != null && Objects.equals(bl.get(i).getPlayer().toString(), player.toString()))
             {
                 return bl.get(i).getCur();
             }
@@ -102,7 +104,7 @@ public class BattleLadderController {
     {
         for (int i = 0; i < bl.size(); i++)
         {
-            if (Objects.equals(bl.get(i).getPlayer().toString(), player.toString()))
+            if (bl.get(i).getPlayer() != null && Objects.equals(bl.get(i).getPlayer().toString(), player.toString()))
             {
                 return bl.get(i);
             }

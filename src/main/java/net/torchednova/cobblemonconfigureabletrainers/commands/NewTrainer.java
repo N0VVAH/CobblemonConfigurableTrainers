@@ -15,7 +15,7 @@ import net.torchednova.cobblemonconfigureabletrainers.trainer.TrainerHandler;
 
 public class NewTrainer {
     public static void register(CommandDispatcher<CommandSourceStack> dispatcher) {
-        dispatcher.register(Commands.literal("newTrainers").requires(source -> source.hasPermission(2))
+        dispatcher.register(Commands.literal("newtrainer").requires(source -> source.hasPermission(2))
                 .then(Commands.argument("pos", Vec3Argument.vec3())
                         .then(Commands.argument("BattleLadder", StringArgumentType.string())
                 .executes(context -> {
