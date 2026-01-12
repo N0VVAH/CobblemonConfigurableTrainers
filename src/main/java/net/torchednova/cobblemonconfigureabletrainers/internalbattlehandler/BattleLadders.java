@@ -9,10 +9,12 @@ public class BattleLadders {
     BattleLadders(int id, String name, ArrayList<Vec3> bats)
     {
         this.index = 0;
+        this.maxDist = 16;
         this.id = id;
         this.name = name;
         this.bats = bats;
         this.player = null;
+
     }
 
     public int getId() { return this.id; }
@@ -26,6 +28,9 @@ public class BattleLadders {
         }
         return bats.get(index);
     }
+    public Vec3 getExit() { return bats.getLast(); }
+    public Vec3 getStart() { return bats.getFirst();}
+    public Vec3 getCur() { return bats.get(index); }
     public Boolean setPlayer(UUID uuid) {
         if (hasPlayer() == false)
         {
@@ -39,9 +44,9 @@ public class BattleLadders {
     }
     public Boolean hasPlayer() { if (player == null) { return false; } else { return false; }}
     public UUID getPlayer() { return player; }
-    public Vec3 getExit() { return bats.getLast(); }
-    public Vec3 getStart() { return bats.getFirst();}
     public void addBattle(Vec3 pos) { bats.add(pos); }
+    public double getDist() { return this.maxDist; }
+    public void setDist(double dist) { this.maxDist = dist; }
 
 
     private int id;
@@ -49,5 +54,6 @@ public class BattleLadders {
     private int index;
     private ArrayList<Vec3> bats;
     private UUID player;
+    private double maxDist;
 
 }

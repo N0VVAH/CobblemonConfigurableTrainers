@@ -40,6 +40,19 @@ public class BattleLadderController {
         return null;
     }
 
+    public static boolean playerInLadder(UUID uuid)
+    {
+        for (int i = 0; i < bl.size(); i++)
+        {
+            if (bl.get(i).getPlayer() != null && Objects.equals(bl.get(i).getPlayer().toString(), uuid.toString()))
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+
+
     public static void newBattleLadder(String name, ArrayList<Vec3> tingy)
     {
         if (tingy == null)
@@ -72,6 +85,32 @@ public class BattleLadderController {
         }
         return null;
     }
+
+    public static Vec3 getCurPos(UUID player)
+    {
+        for (int i = 0; i < bl.size(); i++)
+        {
+            if (Objects.equals(bl.get(i).getPlayer().toString(), player.toString()))
+            {
+                return bl.get(i).getCur();
+            }
+        }
+        return null;
+    }
+
+    public static BattleLadders getBattleLadders(UUID player)
+    {
+        for (int i = 0; i < bl.size(); i++)
+        {
+            if (Objects.equals(bl.get(i).getPlayer().toString(), player.toString()))
+            {
+                return bl.get(i);
+            }
+        }
+        return null;
+    }
+
+
 
 
 

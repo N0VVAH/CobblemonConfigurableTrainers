@@ -18,7 +18,7 @@ public class StartBattleLadder {
 
                             String name = StringArgumentType.getString(context, "name");
 
-                            if(BattleLadderController.getBattleLadder(name).setPlayer(source.getPlayer().getUUID()))
+                            if(BattleLadderController.playerInLadder(source.getPlayer().getUUID()) == false && BattleLadderController.getBattleLadder(name).setPlayer(source.getPlayer().getUUID()))
                             {
                                 source.sendSuccess(
                                         () -> Component.literal("You have Started BattleLadder " + name),

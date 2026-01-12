@@ -10,11 +10,16 @@ import com.gitlab.srcmc.rctapi.api.battle.BattleManager;
 import com.google.common.eventbus.Subscribe;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.phys.Vec3;
+import net.neoforged.fml.ModList;
 import net.neoforged.neoforge.event.RegisterCommandsEvent;
+import net.neoforged.neoforge.event.server.ServerStartedEvent;
+import net.neoforged.neoforge.event.server.ServerStoppingEvent;
 import net.torchednova.cobblemonconfigureabletrainers.commands.*;
+import net.torchednova.cobblemonconfigureabletrainers.datastorage.TargetDataStorage;
 import net.torchednova.cobblemonconfigureabletrainers.internalbattlehandler.BattleLadderController;
 import net.torchednova.cobblemonconfigureabletrainers.internalbattlehandler.BattleLadders;
 import net.torchednova.cobblemonconfigureabletrainers.internalbattlehandler.Battles;
+import net.torchednova.cobblemonconfigureabletrainers.internalbattlehandler.EastNPCTrainer;
 import net.torchednova.cobblemonconfigureabletrainers.trainer.TrainerHandler;
 import org.slf4j.Logger;
 
@@ -50,6 +55,9 @@ import org.spongepowered.asm.mixin.injection.ModifyArg;
 import java.util.Objects;
 import java.util.UUID;
 
+import static com.mojang.blaze3d.Blaze3D.getTime;
+import static net.minecraft.commands.execution.tasks.ContinuationTask.schedule;
+
 // The value here should match an entry in the META-INF/neoforge.mods.toml file
 @Mod(CobblemonConfigureableTrainers.MODID)
 public class CobblemonConfigureableTrainers {
@@ -80,10 +88,6 @@ public class CobblemonConfigureableTrainers {
 
         boolean playerWin = false;
 
-        /*if (battleVictoryEvent.getBattle().getBattleId() == )
-        {
-
-        }*/
 
         for (BattleActor actor : battleVictoryEvent.getWinners()) {
             //LOGGER.info(actor.getType().toString());
@@ -152,6 +156,7 @@ public class CobblemonConfigureableTrainers {
         Battles.init();
         BattleLadderController.init();
 
+
     }
 
 
@@ -161,8 +166,24 @@ public class CobblemonConfigureableTrainers {
     @SubscribeEvent
     public void onServerStarting(ServerStartingEvent event) {
         // Do something when the server starts
-        LOGGER.info("HELLO from server starting");
+        LOGGER.info("HELLO from CobblemonConfigurableTrainers starting");
+
+        BattleLadderController.bl = TargetDataStorage.load(event.getServer());
     }
+
+    @SubscribeEvent
+    public void onServerStarted(ServerStartedEvent event) {
+        EastNPCTrainer.init(event.getServer());
+
+    }
+
+    @SubscribeEvent
+    public void onServerStopping(ServerStoppingEvent event)
+    {
+        TargetDataStorage.save(event.getServer());
+        TargetDataStorage.saveTrainers(event.getServer());
+    }
+
 
     @SubscribeEvent
     public void onRegisterCommands(RegisterCommandsEvent event)
@@ -174,6 +195,7 @@ public class CobblemonConfigureableTrainers {
         NewBattleLadder.register(event.getDispatcher());
         StartBattleLadder.register(event.getDispatcher());
         LeaveBattleLadder.register(event.getDispatcher());
+        AttachTrainerToNPC.register(event.getDispatcher());
     }
 
 }
