@@ -1,0 +1,53 @@
+package net.torchednova.cobblemonconfigureabletrainers.internalbattlehandler;
+
+import net.minecraft.world.phys.Vec3;
+
+import java.util.ArrayList;
+import java.util.UUID;
+
+public class BattleLadders {
+    BattleLadders(int id, String name, ArrayList<Vec3> bats)
+    {
+        this.index = 0;
+        this.id = id;
+        this.name = name;
+        this.bats = bats;
+        this.player = null;
+    }
+
+    public int getId() { return this.id; }
+    public String getName() { return this.name; }
+    public Vec3 getNext()
+    {
+        index++;
+        if (index == bats.size() - 1)
+        {
+            this.player = null;
+        }
+        return bats.get(index);
+    }
+    public Boolean setPlayer(UUID uuid) {
+        if (hasPlayer() == false)
+        {
+            this.player = uuid;
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+    public Boolean hasPlayer() { if (player == null) { return false; } else { return false; }}
+    public UUID getPlayer() { return player; }
+    public Vec3 getExit() { return bats.getLast(); }
+    public Vec3 getStart() { return bats.getFirst();}
+    public void addBattle(Vec3 pos) { bats.add(pos); }
+
+
+    private int id;
+    private String name;
+    private int index;
+    private ArrayList<Vec3> bats;
+    private UUID player;
+
+}

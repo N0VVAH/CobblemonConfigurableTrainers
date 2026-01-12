@@ -133,6 +133,11 @@ dependencies {
     // For more info:
     // http://www.gradle.org/docs/current/userguide/artifact_dependencies_tutorial.html
     // http://www.gradle.org/docs/current/userguide/dependency_management.html
+
+    implementation files("libs/tbcs-neoforge-1.21.1-0.13.0-beta.jar")
+    implementation files("libs/rctapi-neoforge-1.21.1-0.14.5-beta.jar")
+    implementation files("libs/Cobblemon-neoforge-1.7.1+1.21.1.jar")
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:1.9.22"
 }
 
 // This block of code expands all declared replace properties in the specified resource targets.
