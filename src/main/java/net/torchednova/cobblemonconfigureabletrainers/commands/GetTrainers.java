@@ -2,7 +2,6 @@ package net.torchednova.cobblemonconfigureabletrainers.commands;
 
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.arguments.IntegerArgumentType;
-import net.minecraft.commands.CommandSource;
 import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.commands.Commands;
 import net.minecraft.network.chat.Component;
@@ -11,12 +10,9 @@ import net.torchednova.cobblemonconfigureabletrainers.trainer.TrainerHandler;
 
 import java.util.ArrayList;
 
-import static com.mojang.text2speech.Narrator.LOGGER;
-
 public class GetTrainers {
-    public static void register(CommandDispatcher<CommandSourceStack> dispatcher)
-    {
-        dispatcher.register(Commands.literal("getTrainers").requires(source -> source.hasPermission(2)).then( Commands.argument("id", IntegerArgumentType.integer(0))
+    public static void register(CommandDispatcher<CommandSourceStack> dispatcher) {
+        dispatcher.register(Commands.literal("getTrainers").requires(source -> source.hasPermission(2)).then(Commands.argument("id", IntegerArgumentType.integer(0))
                 .executes(context -> {
                     CommandSourceStack source = context.getSource();
 

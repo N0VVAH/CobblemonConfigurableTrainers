@@ -1,7 +1,6 @@
 package net.torchednova.cobblemonconfigureabletrainers.datastorage;
 
 import com.google.common.reflect.TypeToken;
-import kotlin.collections.ArrayDeque;
 import net.minecraft.server.MinecraftServer;
 import net.torchednova.cobblemonconfigureabletrainers.internalbattlehandler.BattleLadderController;
 import net.torchednova.cobblemonconfigureabletrainers.internalbattlehandler.BattleLadders;
@@ -14,7 +13,6 @@ import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.mojang.text2speech.Narrator.LOGGER;
 
 public class TargetDataStorage {
 
@@ -72,7 +70,7 @@ public class TargetDataStorage {
                 Files.createDirectories(parent);
             }
 
-                LOGGER.info(String.valueOf(EastNPCTrainer.linkers.size()));
+                //LOGGER.info(String.valueOf(EastNPCTrainer.linkers.size()));
 
             String json = ModJson.GSON.toJson(EastNPCTrainer.linkers);
             Files.writeString(file, json);

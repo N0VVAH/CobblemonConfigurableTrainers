@@ -6,12 +6,8 @@ import com.mojang.brigadier.arguments.StringArgumentType;
 import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.commands.Commands;
 import net.minecraft.network.chat.Component;
-import com.mojang.brigadier.context.CommandContext;
 
-import net.minecraft.world.phys.Vec3;
 import net.torchednova.cobblemonconfigureabletrainers.internalbattlehandler.Battles;
-import net.torchednova.cobblemonconfigureabletrainers.trainer.Trainer;
-import net.torchednova.cobblemonconfigureabletrainers.trainer.TrainerHandler;
 
 import java.util.UUID;
 
